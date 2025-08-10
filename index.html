@@ -1,0 +1,1190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School MUN Conference</title>
+    <link rel="icon" type="image/x-icon" href="logo.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #f8fafc;
+            color: #2d3748;
+            overflow-x: hidden;
+        }
+        
+        .title-font {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+        }
+        
+        .committee-card {
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        
+        .committee-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: var(--accent);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .modal {
+            transition: all 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+        }
+        
+        .modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .animate-delay-1 {
+            animation-delay: 0.1s;
+        }
+        
+        .animate-delay-2 {
+            animation-delay: 0.2s;
+        }
+        
+        .animate-delay-3 {
+            animation-delay: 0.3s;
+        }
+        
+        .animate-delay-4 {
+            animation-delay: 0.4s;
+        }
+        
+        .animate-delay-5 {
+            animation-delay: 0.5s;
+        }
+        
+        .animate-delay-6 {
+            animation-delay: 0.6s;
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+        
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="relative">
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-white shadow-md z-50">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="https://thetowerpulse.net/wp-content/uploads/2019/11/MUN-Logo.png" alt="MUN logo with globe and olive branch symbol in gold and blue colors" class="h-12 mr-2">
+                <span class="font-bold text-xl text-gray-800">School MUN</span>
+            </div>
+            <div class="hidden md:flex space-x-8">
+                <a href="#home" class="nav-link text-gray-800 hover:text-blue-600 transition duration-300">Home</a>
+                <a href="#about" class="nav-link text-gray-800 hover:text-blue-600 transition duration-300">About</a>
+                <a href="#committees" class="nav-link text-gray-800 hover:text-blue-600 transition duration-300">Committees</a>
+                <a href="#brochure" class="nav-link text-gray-800 hover:text-blue-600 transition duration-300">Brochure</a>
+                <a href="#faculty" class="nav-link text-gray-800 hover:text-blue-600 transition duration-300">Faculty</a>
+                <a href="#credits" class="nav-link text-gray-800 hover:text-blue-600 transition duration-300">Credits</a>
+            </div>
+            <img src="https://dummyimage.com/600x400/000/fff" alt="School logo with crest and motto in official school colors" class="h-10 hidden md:block">
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-gray-800 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section min-h-screen flex items-center justify-center pt-20 pb-20">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row items-center">
+            <div class="w-full md:w-1/2 animate__animated animate__fadeInLeft">
+                <div class="max-w-lg">
+                    <h1 class="title-font text-4xl md:text-6xl font-bold text-white leading-tight mb-6">
+                        Welcome to <span class="text-blue-300">School MUN</span> 2025
+                    </h1>
+                    <p class="text-gray-200 text-lg mb-8">
+                        Join us for an exhilarating Model United Nations conference where diplomacy meets innovation. Engage in global debates, develop leadership skills, and connect with like-minded individuals.
+                    </p>
+                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                        <button onclick="window.location.href='registration.html'" class="bg-red-500 hover:bg-red-600 text-white font-bold py-3 px-6 rounded-lg shadow-lg transition duration-300 transform hover:scale-105 animate__animated animate__pulse animate__infinite">
+                            Register Now
+                        </button>
+                        <button onclick="openModal('learn-more-modal')" class="bg-transparent border-2 border-white text-white hover:bg-white hover:text-blue-900 font-bold py-3 px-6 rounded-lg shadow-lg transition duration-300 transform hover:scale-105">
+                            Learn More
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="w-full md:w-1/2 flex justify-center mt-10 md:mt-0">
+                <div class="relative w-full max-w-md">
+                    <div class="absolute inset-0 bg-blue-400 rounded-full filter blur-3xl opacity-30 animate-pulse"></div>
+                    <img src="https://dummyimage.com/600x400/000/fff" alt="Group of diverse students in formal attire engaging in discussion at a MUN conference" class="relative rounded-lg shadow-2xl floating">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="title-font text-4xl font-bold text-center text-gray-800 mb-16 animate__animated animate__fadeIn">
+                About School MUN
+            </h2>
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="w-full md:w-1/2 pr-0 md:pr-10 mb-10 md:mb-0 animate__animated animate__fadeInLeft">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/a9234d15-26f9-4185-892f-6740efa29cd3.png" alt="Panoramic view of the school campus with modern architecture and green spaces" class="rounded-lg shadow-xl w-full">
+                </div>
+                <div class="w-full md:w-1/2 animate__animated animate__fadeInRight">
+                    <h3 class="text-3xl font-bold text-gray-800 mb-6">Our Conference</h3>
+                    <p class="text-gray-600 mb-6">
+                        School MUN (Model United Nations) is an academic simulation of the United Nations where students assume the roles of ambassadors and participate in simulated UN committees. Our conference aims to educate participants about civics, effective communication, globalization, and multilateral diplomacy.
+                    </p>
+                    <div class="grid grid-cols-2 gap-4 mb-6">
+                        <div class="bg-blue-50 p-4 rounded-lg">
+                            <span class="block text-2xl font-bold text-blue-600">1<sup>st</sup></span>
+                            <span class="text-gray-600">Custom Event</span>
+                        </div>
+                        <div class="bg-blue-50 p-4 rounded-lg">
+                            <span class="block text-2xl font-bold text-blue-600">150</span>
+                            <span class="text-gray-600">Delegates</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Committees Section -->
+    <section id="committees" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <h2 class="title-font text-4xl font-bold text-center text-gray-800 mb-6 animate__animated animate__fadeIn">
+                Our Committees
+            </h2>
+            <p class="text-center text-gray-600 max-w-2xl mx-auto mb-16 animate__animated animate__fadeIn">
+                Explore our diverse range of committees covering critical global issues. Each committee offers unique challenges and learning opportunities.
+            </p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- UNSC -->
+                <div class="committee-card bg-white rounded-xl overflow-hidden animate__animated animate__fadeInUp animate-delay-1">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://tse2.mm.bing.net/th/id/OIP.my1O51b0gkgF-N2GihIjbAHaDt?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" alt="United Nations Security Council chamber with representatives from different countries discussing security matters" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-2">UNSC</h3>
+                        <span class="inline-block bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full mb-4">Advanced</span>
+                        <p class="text-gray-600 mb-4">
+                            The United Nations Security Council (UNSC) is responsible for maintaining international peace and security. Delegates will address pressing global security concerns and work towards effective resolutions.
+                        </p>
+                        <button onclick="openModal('unsc-modal')" class="text-blue-600 hover:text-blue-800 font-medium flex items-center">
+                            More Details
+                            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- UNGA -->
+                <div class="committee-card bg-white rounded-xl overflow-hidden animate__animated animate__fadeInUp animate-delay-2">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://cdn.newsfirst.lk/english-uploads/2021/09/875ae1d3-fdfa5f6e-unga_850x460_acf_cropped.jpg" alt="United Nations General Assembly hall filled with delegates from member states during a session" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-2">UNGA</h3>
+                        <span class="inline-block bg-green-100 text-green-800 text-sm px-3 py-1 rounded-full mb-4">All Levels</span>
+                        <p class="text-gray-600 mb-4">
+                            The United Nations General Assembly (UNGA) serves as the main deliberative, policymaking, and representative organ of the UN. Delegates will debate on a wide range of international issues.
+                        </p>
+                        <button onclick="openModal('unga-modal')" class="text-blue-600 hover:text-blue-800 font-medium flex items-center">
+                            More Details
+                            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- WHO -->
+                <div class="committee-card bg-white rounded-xl overflow-hidden animate__animated animate__fadeInUp animate-delay-3">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://logos-world.net/wp-content/uploads/2021/03/World-Health-Organization-Logo-2006-present.jpg" alt="Medical professionals discussing global health initiatives with charts and data visualization in background" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-2">WHO</h3>
+                        <span class="inline-block bg-purple-100 text-purple-800 text-sm px-3 py-1 rounded-full mb-4">Intermediate</span>
+                        <p class="text-gray-600 mb-4">
+                            The World Health Organization (WHO) directs international health within the United Nations system. Delegates will address critical health challenges and develop global health policy solutions.
+                        </p>
+                        <button onclick="openModal('who-modal')" class="text-blue-600 hover:text-blue-800 font-medium flex items-center">
+                            More Details
+                            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- ICJ -->
+                <div class="committee-card bg-white rounded-xl overflow-hidden animate__animated animate__fadeInUp animate-delay-4">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://www.thessismun.org/wp-content/uploads/2023/01/thessismun-international-court-of-justice.jpg" alt="International Court of Justice courtroom with judges presiding over a hearing on international law" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-2">ICJ</h3>
+                        <span class="inline-block bg-yellow-100 text-yellow-800 text-sm px-3 py-1 rounded-full mb-4">Advanced</span>
+                        <p class="text-gray-600 mb-4">
+                            The International Court of Justice (ICJ) is the principal judicial organ of the United Nations. Delegates will participate in simulated judicial proceedings of international disputes.
+                        </p>
+                        <button onclick="openModal('icj-modal')" class="text-blue-600 hover:text-blue-800 font-medium flex items-center">
+                            More Details
+                            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- UNCSTD -->
+                <div class="committee-card bg-white rounded-xl overflow-hidden animate__animated animate__fadeInUp animate-delay-5">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.squarespace-cdn.com/content/v1/630a7c3128409955ec323765/b7634898-3686-43e3-860a-ce15604539fd/Unknown.png" alt="Scientists and diplomats discussing sustainable technology development with futuristic cityscape in background" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-2">UNCSTD</h3>
+                        <span class="inline-block bg-red-100 text-red-800 text-sm px-3 py-1 rounded-full mb-4">Tech-Focused</span>
+                        <p class="text-gray-600 mb-4">
+                            The United Nations Commission on Science and Technology for Development (UNCSTD) examines science and technology questions and their implications for development.
+                        </p>
+                        <button onclick="openModal('uncstd-modal')" class="text-blue-600 hover:text-blue-800 font-medium flex items-center">
+                            More Details
+                            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- HCC -->
+                <div class="committee-card bg-white rounded-xl overflow-hidden animate__animated animate__fadeInUp animate-delay-6">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/1/1b/United_Nations_flag_proposal_January_1947.svg" alt="Historical figures debating in a grand hall with vintage maps and documents on the tables" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-2">HCC</h3>
+                        <span class="inline-block bg-indigo-100 text-indigo-800 text-sm px-3 py-1 rounded-full mb-4">Historical</span>
+                        <p class="text-gray-600 mb-4">
+                            The Historical Crisis Committee (HCC) simulates pivotal moments in history. Delegates will reenact and potentially alter historical events through diplomacy and decision-making.
+                        </p>
+                        <button onclick="openModal('hcc-modal')" class="text-blue-600 hover:text-blue-800 font-medium flex items-center">
+                            More Details
+                            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Brochure Section -->
+    <section id="brochure" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="title-font text-4xl font-bold text-gray-800 mb-2 animate__animated animate__fadeIn">
+                    Conference Brochure
+                </h2>
+                <p class="text-gray-600 max-w-2xl mx-auto animate__animated animate__fadeIn">
+                    Download our comprehensive brochure containing all the details about the conference, including schedules, committee topics, and important information.
+                </p>
+            </div>
+            <div class="max-w-4xl mx-auto bg-blue-50 rounded-xl p-10 flex flex-col md:flex-row items-center animate__animated animate__zoomIn">
+                <div class="w-full md:w-1/2 mb-8 md:mb-0">
+                    <img src="https://thetowerpulse.net/wp-content/uploads/2019/11/MUN-Logo.png" alt="Brochure cover design featuring School MUN logo with abstract geometric elements in blue and gold" class="rounded-lg shadow-md w-full max-w-xs mx-auto hover:shadow-lg transition duration-300">
+                </div>
+                <div class="w-full md:w-1/2 pl-0 md:pl-10">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">What's Inside:</h3>
+                    <ul class="space-y-3 mb-6">
+                        <li class="flex items-start">
+                            <svg class="h-5 w-5 text-green-500 mr-2 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-gray-700">Detailed conference schedule and timeline</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="h-5 w-5 text-green-500 mr-2 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-gray-700">In-depth committee descriptions and topics</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="h-5 w-5 text-green-500 mr-2 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-gray-700">Rules of procedure and debate guidelines</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="h-5 w-5 text-green-500 mr-2 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-gray-700">Important contact information and venue details</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="h-5 w-5 text-green-500 mr-2 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-gray-700">Judging Criteria</span>
+                        </li>
+                    </ul>
+                    <button onclick="openModal('brochure-modal')" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg shadow-md transition duration-300 transform hover:scale-105 w-full md:w-auto">
+                        Download Brochure
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Faculty Section -->
+    <section id="faculty" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <h2 class="title-font text-4xl font-bold text-center text-gray-800 mb-4 animate__animated animate__fadeIn">
+                Faculty
+            </h2>
+            <p class="text-center text-gray-600 max-w-2xl mx-auto mb-16 animate__animated animate__fadeIn">
+                Our dedicated Chairs and Co-Chairs
+            </p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white rounded-xl overflow-hidden shadow-md transform transition duration-300 hover:-translate-y-1 animate__animated animate__fadeIn">
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://static.vecteezy.com/system/resources/previews/019/879/186/large_2x/user-icon-on-transparent-background-free-png.png" alt="Senior male professor with glasses and blazer standing in front of bookshelf with confident expression" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-1">Name-1</h3>
+                        <p class="text-blue-600 mb-3">UNSC Chair</p>
+                        <p class="text-gray-600 text-sm">
+                            Description.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl overflow-hidden shadow-md transform transition duration-300 hover:-translate-y-1 animate__animated animate__fadeIn animate-delay-1">
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://static.vecteezy.com/system/resources/previews/019/879/186/large_2x/user-icon-on-transparent-background-free-png.png" alt="Professional female educator with warm smile holding a clipboard and wearing formal attire" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-1">Name - 2</h3>
+                        <p class="text-blue-600 mb-3">UNGA Chair</p>
+                        <p class="text-gray-600 text-sm">
+                            Description.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl overflow-hidden shadow-md transform transition duration-300 hover:-translate-y-1 animate__animated animate__fadeIn animate-delay-2">
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://static.vecteezy.com/system/resources/previews/019/879/186/large_2x/user-icon-on-transparent-background-free-png.png" alt="Young dynamic teacher in casual formal wear pointing at a whiteboard with political science diagrams" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-1">Name-3</h3>
+                        <p class="text-blue-600 mb-3">WHO Chair</p>
+                        <p class="text-gray-600 text-sm">
+                            Description.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl overflow-hidden shadow-md transform transition duration-300 hover:-translate-y-1 animate__animated animate__fadeIn animate-delay-2">
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://static.vecteezy.com/system/resources/previews/019/879/186/large_2x/user-icon-on-transparent-background-free-png.png" alt="Young dynamic teacher in casual formal wear pointing at a whiteboard with political science diagrams" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-1">Name-4</h3>
+                        <p class="text-blue-600 mb-3">ICJ Chair/Judge</p>
+                        <p class="text-gray-600 text-sm">
+                            Description.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl overflow-hidden shadow-md transform transition duration-300 hover:-translate-y-1 animate__animated animate__fadeIn animate-delay-2">
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://static.vecteezy.com/system/resources/previews/019/879/186/large_2x/user-icon-on-transparent-background-free-png.png" alt="Young dynamic teacher in casual formal wear pointing at a whiteboard with political science diagrams" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-1">Name-5</h3>
+                        <p class="text-blue-600 mb-3">UNCSTD Chair</p>
+                        <p class="text-gray-600 text-sm">
+                            Description.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl overflow-hidden shadow-md transform transition duration-300 hover:-translate-y-1 animate__animated animate__fadeIn animate-delay-2">
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://static.vecteezy.com/system/resources/previews/019/879/186/large_2x/user-icon-on-transparent-background-free-png.png" alt="Young dynamic teacher in casual formal wear pointing at a whiteboard with political science diagrams" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-1">Name-6</h3>
+                        <p class="text-blue-600 mb-3">HCC Chair</p>
+                        <p class="text-gray-600 text-sm">
+                            Description.
+                        </p>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl overflow-hidden shadow-md transform transition duration-300 hover:-translate-y-1 animate__animated animate__fadeIn animate-delay-2">
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://static.vecteezy.com/system/resources/previews/019/879/186/large_2x/user-icon-on-transparent-background-free-png.png" alt="Young dynamic teacher in casual formal wear pointing at a whiteboard with political science diagrams" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-1">Name-7</h3>
+                        <p class="text-blue-600 mb-3">UNSC Co-Chair</p>
+                        <p class="text-gray-600 text-sm">
+                            Description.
+                        </p>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl overflow-hidden shadow-md transform transition duration-300 hover:-translate-y-1 animate__animated animate__fadeIn animate-delay-2">
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://static.vecteezy.com/system/resources/previews/019/879/186/large_2x/user-icon-on-transparent-background-free-png.png" alt="Young dynamic teacher in casual formal wear pointing at a whiteboard with political science diagrams" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-1">Name-8</h3>
+                        <p class="text-blue-600 mb-3">UNGA Co-Chair</p>
+                        <p class="text-gray-600 text-sm">
+                            Description.
+                        </p>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl overflow-hidden shadow-md transform transition duration-300 hover:-translate-y-1 animate__animated animate__fadeIn animate-delay-2">
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://static.vecteezy.com/system/resources/previews/019/879/186/large_2x/user-icon-on-transparent-background-free-png.png" alt="Young dynamic teacher in casual formal wear pointing at a whiteboard with political science diagrams" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-1">Name-9</h3>
+                        <p class="text-blue-600 mb-3">WHO Co-Chair</p>
+                        <p class="text-gray-600 text-sm">
+                            Description.
+                        </p>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl overflow-hidden shadow-md transform transition duration-300 hover:-translate-y-1 animate__animated animate__fadeIn animate-delay-2">
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://static.vecteezy.com/system/resources/previews/019/879/186/large_2x/user-icon-on-transparent-background-free-png.png" alt="Young dynamic teacher in casual formal wear pointing at a whiteboard with political science diagrams" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-1">Name-10</h3>
+                        <p class="text-blue-600 mb-3">ICJ Co-Chair</p>
+                        <p class="text-gray-600 text-sm">
+                            Description.
+                        </p>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl overflow-hidden shadow-md transform transition duration-300 hover:-translate-y-1 animate__animated animate__fadeIn animate-delay-2">
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://static.vecteezy.com/system/resources/previews/019/879/186/large_2x/user-icon-on-transparent-background-free-png.png" alt="Young dynamic teacher in casual formal wear pointing at a whiteboard with political science diagrams" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-1">Name-11</h3>
+                        <p class="text-blue-600 mb-3">UNCSTD Co-Chair</p>
+                        <p class="text-gray-600 text-sm">
+                            Description.
+                        </p>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl overflow-hidden shadow-md transform transition duration-300 hover:-translate-y-1 animate__animated animate__fadeIn animate-delay-2">
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://static.vecteezy.com/system/resources/previews/019/879/186/large_2x/user-icon-on-transparent-background-free-png.png" alt="Young dynamic teacher in casual formal wear pointing at a whiteboard with political science diagrams" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-1">Name-12</h3>
+                        <p class="text-blue-600 mb-3">HCC Co-Chair</p>
+                        <p class="text-gray-600 text-sm">
+                            Description.
+                        </p>
+                    </div>
+                </div>
+
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Credits Section -->
+    <section id="credits" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="title-font text-4xl font-bold text-center text-gray-800 mb-4 animate__animated animate__fadeIn">
+                Credits
+            </h2>
+            <p class="text-center text-gray-600 max-w-2xl mx-auto mb-16 animate__animated animate__fadeIn">
+                A special thanks to all those who contribute to making School MUN a success.
+            </p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto animate__animated animate__fadeIn">
+                <div class="bg-gray-50 p-8 rounded-xl">
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Organizing Committee</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <svg class="h-5 w-5 text-blue-500 mr-2 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                            </svg>
+                            <span>Name</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="h-5 w-5 text-blue-500 mr-2 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                            </svg>
+                            <span>Name</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="h-5 w-5 text-blue-500 mr-2 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                            </svg>
+                            <span>Name</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="h-5 w-5 text-blue-500 mr-2 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                            </svg>
+                            <span>Name</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="bg-gray-50 p-8 rounded-xl">
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Special Thanks</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <svg class="h-5 w-5 text-green-500 mr-2 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                            </svg>
+                            <span>TEST</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="h-5 w-5 text-green-500 mr-2 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                            </svg>
+                            <span>TEST</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="h-5 w-5 text-green-500 mr-2 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                            </svg>
+                            <span>TEST</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="h-5 w-5 text-green-500 mr-2 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                            </svg>
+                            <span>TEST</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between">
+                <div class="w-full md:w-1/3 mb-8 md:mb-0">
+                    <div class="flex items-center mb-4">
+                        <img src="https://thetowerpulse.net/wp-content/uploads/2019/11/MUN-Logo.png" alt="MUN logo with globe and olive branch symbol in gold and blue colors" class="h-10 mr-3">
+                        <span class="font-bold text-xl">School MUN</span>
+                    </div>
+                    <p class="text-gray-400 mb-4">
+                        Empowering future leaders through diplomacy, debate, and global awareness.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"></path>
+                            </svg>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"></path>
+                            </svg>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"></path>
+                            </svg>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="w-full md:w-1/3 mb-8 md:mb-0">
+                    <h3 class="text-lg font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-gray-400 hover:text-white transition duration-300">Home</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-white transition duration-300">About</a></li>
+                        <li><a href="#committees" class="text-gray-400 hover:text-white transition duration-300">Committees</a></li>
+                        <li><a href="#brochure" class="text-gray-400 hover:text-white transition duration-300">Brochure</a></li>
+                        <li><a href="#faculty" class="text-gray-400 hover:text-white transition duration-300">Faculty</a></li>
+                        <li><a href="#credits" class="text-gray-400 hover:text-white transition duration-300">Credits</a></li>
+                    </ul>
+                </div>
+                
+                <div class="w-full md:w-1/3">
+                    <h3 class="text-lg font-bold mb-4">Contact Us</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 mr-2 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                            </svg>
+                            <span>alliance.helpdesk@hotmail.com</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 mr-2 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                            </svg>
+                            <span>Alliance Group Limited</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 mr-2 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                            </svg>
+                            <span>Harvest International School</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400 text-sm">
+                <p>© 2025 School MUN. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Registration Modal -->
+    <div>
+        <div id="learn-more-modal" class="modal fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 p-4 transition-all duration-300">
+            <div class="bg-white rounded-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto transform transition-all duration-300 scale-95">
+                <div class="p-6">
+                    <div class="flex justify-between items-center mb-6">
+                        <h3 class="text-2xl font-bold text-gray-800">About School MUN</h3>
+                        <button onclick="closeModal('learn-more-modal')" class="text-gray-500 hover:text-gray-700">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    
+                    <div class="space-y-4 text-gray-600">
+                        <p>
+                            The School Model United Nations (MUN) program has been cultivating young leaders since 2010, providing students with a platform to develop their diplomatic, public speaking, and critical thinking skills.
+                        </p>
+                        
+                        <h4 class="font-bold text-gray-800 mt-6">Key Features of Our Conference:</h4>
+                        <ul class="list-disc pl-5 space-y-2">
+                            <li>Six diverse committees covering security, health, judicial, scientific, and historical topics</li>
+                            <li>Experienced faculty advisors and student leadership team</li>
+                            <li>Training workshops for both beginners and advanced delegates</li>
+                            <li>Crisis simulations that test delegates' quick thinking and adaptability</li>
+                            <li>Networking opportunities with students from across the region</li>
+                            <li>Awards recognizing outstanding delegates in various categories</li>
+                        </ul>
+                        
+                        <h4 class="font-bold text-gray-800 mt-6">Who Should Participate?</h4>
+                        <p>
+                            Our conference welcomes students from all levels of experience. Whether you're a first-time delegate or a seasoned MUN participant, our diverse committees ensure there's a perfect fit for your interests and skill level.
+                        </p>
+                        
+                        <div class="mt-8 flex justify-center">
+                            <button onclick="window.location.href='registration.html'" class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-6 rounded-lg shadow-md transition duration-300">
+                                Register Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Committee Modals -->
+        <div id="unsc-modal" class="modal fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 p-4 transition-all duration-300">
+            <div class="bg-white rounded-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto p-6">
+                <button onclick="closeModal('unsc-modal')" class="ml-auto block text-gray-500 hover:text-gray-700 mb-4">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+                
+                <h3 class="text-2xl font-bold text-gray-800 mb-4">United Nations Security Council (UNSC)</h3>
+                
+                <div class="grid md:grid-cols-2 gap-6 mb-6">
+                    <div>
+                        <h4 class="font-bold text-gray-800 mb-2">Committee Level:</h4>
+                        <span class="inline-block bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full mb-4">Advanced</span>
+                        
+                        <h4 class="font-bold text-gray-800 mb-2">Topics:</h4>
+                        <ol class="list-decimal pl-5 space-y-1">
+                            <li>The situation in the South China Sea</li>
+                            <li>Cybersecurity threats to international peace</li>
+                        </ol>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-gray-800 mb-2">Delegation Size:</h4>
+                        <p>1 delegate per country</p>
+                        
+                        <h4 class="font-bold text-gray-800 mb-2">Recommended For:</h4>
+                        <p>Delegates with prior MUN experience interested in global security issues</p>
+                    </div>
+                </div>
+                
+                <h4 class="font-bold text-gray-800 mb-2">Committee Description:</h4>
+                <p class="text-gray-600 mb-4">
+                    The United Nations Security Council (UNSC) is one of the six principal organs of the United Nations, charged with ensuring international peace and security. This committee is known for its fast-paced nature and high-stakes debates on contemporary global security challenges. Delegates will need to demonstrate strong diplomatic skills, strategic thinking, and the ability to negotiate under pressure.
+                </p>
+                
+                <h4 class="font-bold text-gray-800 mb-2">What to Expect:</h4>
+                <ul class="list-disc pl-5 space-y-2 text-gray-600 mb-6">
+                    <li>Intensive debates on current international crises</li>
+                    <li>Opportunity to draft and pass binding resolutions</li>
+                    <li>Possible crisis scenarios requiring immediate response</li>
+                    <li>Use of veto power by permanent members</li>
+                    <li>High-level diplomatic interactions</li>
+                </ul>
+                
+                <div class="flex justify-center mt-8">
+                    <button onclick="window.location.href='registration.html'" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-lg shadow-md transition duration-300">
+                        Register for UNSC
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+       <div id="unga-modal" class="modal fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 p-4 transition-all duration-300">
+    <div class="bg-white rounded-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto p-6">
+        <button onclick="closeModal('unga-modal')" class="ml-auto block text-gray-500 hover:text-gray-700 mb-4">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        </button>
+
+        <h3 class="text-2xl font-bold text-gray-800 mb-4">United Nations General Assembly (UNGA)</h3>
+
+        <div class="grid md:grid-cols-2 gap-6 mb-6">
+            <div>
+                <h4 class="font-bold text-gray-800 mb-2">Committee Level:</h4>
+                <span class="inline-block bg-green-100 text-green-800 text-sm px-3 py-1 rounded-full mb-4">All Levels</span>
+
+                <h4 class="font-bold text-gray-800 mb-2">Topics:</h4>
+                <ol class="list-decimal pl-5 space-y-1">
+                    <li>Global access to education and digital literacy</li>
+                    <li>Climate change and sustainable development</li>
+                </ol>
+            </div>
+            <div>
+                <h4 class="font-bold text-gray-800 mb-2">Delegation Size:</h4>
+                <p>1 delegate per country</p>
+
+                <h4 class="font-bold text-gray-800 mb-2">Recommended For:</h4>
+                <p>First-time MUN participants and those interested in broad international policy discussions</p>
+            </div>
+        </div>
+
+        <h4 class="font-bold text-gray-800 mb-2">Committee Description:</h4>
+        <p class="text-gray-600 mb-4">
+            The United Nations General Assembly (UNGA) is the main deliberative body of the UN, where all member states have equal representation. It addresses a wide range of global issues including development, human rights, and international cooperation. This committee encourages inclusive dialogue and consensus-building, making it ideal for delegates looking to explore diplomacy in a collaborative setting.
+        </p>
+
+        <h4 class="font-bold text-gray-800 mb-2">What to Expect:</h4>
+        <ul class="list-disc pl-5 space-y-2 text-gray-600 mb-6">
+            <li>Engaging discussions on global development and humanitarian issues</li>
+            <li>Drafting and voting on non-binding resolutions</li>
+            <li>Focus on consensus and multilateral cooperation</li>
+            <li>Opportunities to practice public speaking and negotiation</li>
+            <li>Inclusive and educational environment</li>
+        </ul>
+
+        <div class="flex justify-center mt-8">
+            <button onclick="window.location.href='registration.html'" class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-6 rounded-lg shadow-md transition duration-300">
+                Register for UNGA
+            </button>
+        </div>
+    </div>
+</div>
+
+        
+        <div id="who-modal" class="modal fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 p-4 transition-all duration-300">
+    <div class="bg-white rounded-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto p-6">
+        <button onclick="closeModal('who-modal')" class="ml-auto block text-gray-500 hover:text-gray-700 mb-4">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        </button>
+
+        <h3 class="text-2xl font-bold text-gray-800 mb-4">World Health Organization (WHO)</h3>
+
+        <div class="grid md:grid-cols-2 gap-6 mb-6">
+            <div>
+                <h4 class="font-bold text-gray-800 mb-2">Committee Level:</h4>
+                <span class="inline-block bg-purple-100 text-purple-800 text-sm px-3 py-1 rounded-full mb-4">Intermediate</span>
+
+                <h4 class="font-bold text-gray-800 mb-2">Topics:</h4>
+                <ol class="list-decimal pl-5 space-y-1">
+                    <li>Global response to future pandemics</li>
+                    <li>Mental health as a global priority</li>
+                </ol>
+            </div>
+            <div>
+                <h4 class="font-bold text-gray-800 mb-2">Delegation Size:</h4>
+                <p>1 delegate per country</p>
+
+                <h4 class="font-bold text-gray-800 mb-2">Recommended For:</h4>
+                <p>Delegates interested in public health, policy-making, and humanitarian issues</p>
+            </div>
+        </div>
+
+        <h4 class="font-bold text-gray-800 mb-2">Committee Description:</h4>
+        <p class="text-gray-600 mb-4">
+            The World Health Organization (WHO) is a specialized agency of the United Nations responsible for international public health. This committee focuses on pressing health challenges and policy coordination among nations. Delegates will engage in evidence-based discussions, propose innovative solutions, and collaborate to improve global health outcomes.
+        </p>
+
+        <h4 class="font-bold text-gray-800 mb-2">What to Expect:</h4>
+        <ul class="list-disc pl-5 space-y-2 text-gray-600 mb-6">
+            <li>Policy debates on global health systems and emergency preparedness</li>
+            <li>Collaborative drafting of health-related resolutions</li>
+            <li>Focus on scientific data and humanitarian impact</li>
+            <li>Opportunities to simulate international cooperation in health crises</li>
+            <li>Inclusive and research-driven environment</li>
+        </ul>
+
+        <div class="flex justify-center mt-8">
+            <button onclick="window.location.href='registration.html'" class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-6 rounded-lg shadow-md transition duration-300">
+                Register for WHO
+            </button>
+        </div>
+    </div>
+</div>
+
+        </div>
+        
+       <div id="icj-modal" class="modal fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 p-4 transition-all duration-300">
+    <div class="bg-white rounded-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto p-6">
+        <button onclick="closeModal('icj-modal')" class="ml-auto block text-gray-500 hover:text-gray-700 mb-4">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        </button>
+
+        <h3 class="text-2xl font-bold text-gray-800 mb-4">International Court of Justice (ICJ)</h3>
+
+        <div class="grid md:grid-cols-2 gap-6 mb-6">
+            <div>
+                <h4 class="font-bold text-gray-800 mb-2">Committee Level:</h4>
+                <span class="inline-block bg-yellow-100 text-yellow-800 text-sm px-3 py-1 rounded-full mb-4">Advanced</span>
+
+                <h4 class="font-bold text-gray-800 mb-2">Case Topics:</h4>
+                <ol class="list-decimal pl-5 space-y-1">
+                    <li>Territorial dispute between two sovereign nations</li>
+                    <li>Violation of international humanitarian law</li>
+                </ol>
+            </div>
+            <div>
+                <h4 class="font-bold text-gray-800 mb-2">Delegation Size:</h4>
+                <p>Individual roles (judges, advocates, registrars)</p>
+
+                <h4 class="font-bold text-gray-800 mb-2">Recommended For:</h4>
+                <p>Experienced delegates with strong analytical and legal reasoning skills</p>
+            </div>
+        </div>
+
+        <h4 class="font-bold text-gray-800 mb-2">Committee Description:</h4>
+        <p class="text-gray-600 mb-4">
+            The International Court of Justice (ICJ) is the principal judicial organ of the United Nations, tasked with settling legal disputes between states and providing advisory opinions on international legal questions. This committee simulates real-world legal proceedings, requiring delegates to interpret treaties, present arguments, and deliver judgments based on international law.
+        </p>
+
+        <h4 class="font-bold text-gray-800 mb-2">What to Expect:</h4>
+        <ul class="list-disc pl-5 space-y-2 text-gray-600 mb-6">
+            <li>Structured courtroom-style proceedings</li>
+            <li>Detailed legal research and case preparation</li>
+            <li>Presentation of oral arguments and written memorials</li>
+            <li>Judicial deliberation and verdict formulation</li>
+            <li>Immersive experience in international law and diplomacy</li>
+        </ul>
+
+        <div class="flex justify-center mt-8">
+            <button onclick="window.location.href='registration.html'" class="bg-yellow-600 hover:bg-yellow-700 text-white font-bold py-2 px-6 rounded-lg shadow-md transition duration-300">
+                Register for ICJ
+            </button>
+        </div>
+    </div>
+</div>
+
+        
+        <div id="uncstd-modal" class="modal fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 p-4 transition-all duration-300">
+    <div class="bg-white rounded-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto p-6">
+        <button onclick="closeModal('uncstd-modal')" class="ml-auto block text-gray-500 hover:text-gray-700 mb-4">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        </button>
+
+        <h3 class="text-2xl font-bold text-gray-800 mb-4">United Nations Commission on Science and Technology for Development (UNCSTD)</h3>
+
+        <div class="grid md:grid-cols-2 gap-6 mb-6">
+            <div>
+                <h4 class="font-bold text-gray-800 mb-2">Committee Focus:</h4>
+                <span class="inline-block bg-red-100 text-red-800 text-sm px-3 py-1 rounded-full mb-4">Tech-Focused</span>
+
+                <h4 class="font-bold text-gray-800 mb-2">Topics:</h4>
+                <ol class="list-decimal pl-5 space-y-1">
+                    <li>Bridging the global digital divide</li>
+                    <li>Ethical governance of emerging technologies</li>
+                </ol>
+            </div>
+            <div>
+                <h4 class="font-bold text-gray-800 mb-2">Delegation Size:</h4>
+                <p>1 delegate per country</p>
+
+                <h4 class="font-bold text-gray-800 mb-2">Recommended For:</h4>
+                <p>Delegates passionate about technology, innovation, and sustainable development</p>
+            </div>
+        </div>
+
+        <h4 class="font-bold text-gray-800 mb-2">Committee Description:</h4>
+        <p class="text-gray-600 mb-4">
+            The UNCSTD is a functional commission of the UN Economic and Social Council, dedicated to harnessing science and technology for sustainable development. This committee explores how innovation can address global challenges, reduce inequality, and promote inclusive growth. Delegates will analyze policy frameworks, propose tech-driven solutions, and debate the ethical implications of emerging technologies.
+        </p>
+
+        <h4 class="font-bold text-gray-800 mb-2">What to Expect:</h4>
+        <ul class="list-disc pl-5 space-y-2 text-gray-600 mb-6">
+            <li>Discussions on digital infrastructure and access</li>
+            <li>Debates on AI, biotechnology, and data ethics</li>
+            <li>Collaborative drafting of development-oriented resolutions</li>
+            <li>Focus on innovation, equity, and sustainability</li>
+            <li>Opportunities to shape global tech policy</li>
+        </ul>
+
+        <div class="flex justify-center mt-8">
+            <button onclick="window.location.href='registration.html'" class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-6 rounded-lg shadow-md transition duration-300">
+                Register for UNCSTD
+            </button>
+        </div>
+    </div>
+</div>
+
+        
+        <div id="hcc-modal" class="modal fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 p-4 transition-all duration-300">
+    <div class="bg-white rounded-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto p-6">
+        <button onclick="closeModal('hcc-modal')" class="ml-auto block text-gray-500 hover:text-gray-700 mb-4">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        </button>
+
+        <h3 class="text-2xl font-bold text-gray-800 mb-4">Historical Crisis Committee (HCC)</h3>
+
+        <div class="grid md:grid-cols-2 gap-6 mb-6">
+            <div>
+                <h4 class="font-bold text-gray-800 mb-2">Committee Type:</h4>
+                <span class="inline-block bg-indigo-100 text-blue-800 text-sm px-3 py-1 rounded-full mb-4">Historical</span>
+
+                <h4 class="font-bold text-gray-800 mb-2">Topics:</h4>
+                <ol class="list-decimal pl-5 space-y-1">
+                    <li>The Cuban Missile Crisis</li>
+                    <li>The Partition of India</li>
+                </ol>
+            </div>
+            <div>
+                <h4 class="font-bold text-gray-800 mb-2">Delegation Size:</h4>
+                <p>Individual character roles</p>
+
+                <h4 class="font-bold text-gray-800 mb-2">Recommended For:</h4>
+                <p>Experienced delegates who enjoy fast-paced, historically immersive simulations</p>
+            </div>
+        </div>
+
+        <h4 class="font-bold text-gray-800 mb-2">Committee Description:</h4>
+        <p class="text-gray-600 mb-4">
+            The Historical Crisis Committee (HCC) transports delegates to pivotal moments in history, challenging them to rewrite the course of events through diplomacy, strategy, and quick decision-making. With dynamic updates and evolving scenarios, this committee demands adaptability, historical knowledge, and creative problem-solving.
+        </p>
+
+        <h4 class="font-bold text-gray-800 mb-2">What to Expect:</h4>
+        <ul class="list-disc pl-5 space-y-2 text-gray-600 mb-6">
+            <li>Immersive roleplay in historical settings</li>
+            <li>Real-time crisis updates and rapid responses</li>
+            <li>Opportunities to alter historical outcomes</li>
+            <li>Collaborative and competitive diplomacy</li>
+            <li>Engaging character-driven debates</li>
+        </ul>
+
+        <div class="flex justify-center mt-8">
+            <button onclick="window.location.href='registration.html'" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-6 rounded-lg shadow-md transition duration-300">
+                Register for HCC
+            </button>
+        </div>
+    </div>
+</div>
+
+        
+        <div id="brochure-modal" class="modal fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 p-4 transition-all duration-300">
+            <div class="bg-white rounded-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto p-6">
+                <button onclick="closeModal('brochure-modal')" class="ml-auto block text-gray-500 hover:text-gray-700 mb-4">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+                
+                <h3 class="text-2xl font-bold text-gray-800 mb-4">Download Conference Brochure</h3>
+                
+                <div class="flex flex-col md:flex-row gap-6 mb-6">
+                    <div class="w-full md:w-1/2">
+                        <img src="https://thetowerpulse.net/wp-content/uploads/2019/11/MUN-Logo.png" alt="Brochure cover design featuring School MUN logo with abstract geometric elements in blue and gold" class="rounded-lg shadow-md w-full">
+                    </div>
+                    <div class="w-full md:w-1/2">
+                        <h4 class="font-bold text-gray-800 mb-4">What's Inside:</h4>
+                        <ul class="list-disc pl-5 space-y-3 text-gray-600 mb-6">
+                            <li>Complete conference schedule and timeline</li>
+                            <li>Detailed committee descriptions and topics</li>
+                            <li>Rules of procedure and debate guidelines</li>
+                            <li>Important contact information and venue details</li>
+                            <li>Judging Criteria</li>
+                            <li>Registration information and deadlines</li>
+                            <li>Delegate preparation guidelines</li>
+                            <li>Conference policies and code of conduct</li>
+                        </ul>
+                        
+                        <div class="mt-4">
+                            <a href="MUN-Brochure-Final.docx" download>
+                                <button class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-lg shadow-md transition duration-300 w-full mb-3">
+                                    Download Brochure
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="history-modal" class="modal fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 p-4 transition-all duration-300">
+            <!-- Similar structure for history modal -->
+        </div>
+    </div>
+
+    <script>
+        // Modal functions
+        function openModal(modalId) {
+            document.getElementById(modalId).classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Close modal when clicking outside
+        const modals = document.querySelectorAll('.modal');
+        modals.forEach(modal => {
+            modal.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    this.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        });
+        
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.createElement('div');
+        mobileMenu.className = 'md:hidden hidden mobile-menu fixed inset-0 bg-white z-40 transition-all duration-300';
+        
+        document.body.appendChild(mobileMenu);
+        
+        mobileMenuButton.addEventListener('click', function() {
+            mobileMenu.classList.toggle('hidden');
+            document.body.style.overflow = mobileMenu.classList.contains('hidden') ? 'auto' : 'hidden';
+        });
+        
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+                
+                // Close mobile menu if open
+                if (!mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        });
+        
+        // Animation on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const animationClass = entry.target.getAttribute('data-animation');
+                    if (animationClass) {
+                        entry.target.classList.add('animate__animated', animationClass);
+                    }
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        document.querySelectorAll('[data-animation]').forEach(element => {
+            observer.observe(element);
+        });
+    </script>
+</body>
+</html>
