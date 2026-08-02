@@ -1,818 +1,309 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="hero">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>HARVEST MUN</title>
+    <title>HARVEST MUN | Executive Conference</title>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Cinzel:wght@500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
 
-    <!-- Icons -->
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
-
-    <!-- AOS -->
-    <link rel="stylesheet"
-        href="https://unpkg.com/aos@2.3.4/dist/aos.css">
-
-    <!-- CSS -->
+    <!-- Custom Aero Stylesheet -->
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<!--==========================
-LOADER
-===========================-->
+<!-- Mouse Glow Ambient Tracker -->
+<div class="mouse-glow" id="mouseGlow"></div>
 
+<!--=========================================================
+AERO FLOATING GLASS NAVBAR
+===========================================================-->
+<header class="floating-dock">
+    <div class="dock-container">
+        <!-- LEFT: Pure Harvest Logo Slot (No Link / No Hero Attribute) -->
+        <div class="pure-logo-slot harvest-nav-slot" title="Harvest Logo">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHl20oj9V7ZYle6T3hgFOunzJ6WdLE562JfhkfYysW0G2lhtT4dsqhe9UP&s=10" alt="Harvest Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="fallback-logo-icon"><i class="fa-solid fa-seedling"></i></div>
+        </div>
 
-<!--==========================
-CURSOR
-===========================-->
+        <nav class="dock-nav">
+            <button type="button" class="nav-jump-btn active-link" data-target="overview" id="navOverviewBtn">Overview</button>
+            <button type="button" class="nav-jump-btn" data-target="committees">Committees</button>
+            <button type="button" class="nav-jump-btn" data-target="schedule">Schedule</button>
+            <button type="button" class="nav-jump-btn" data-target="credits">Credits</button>
+        </nav>
 
-<div class="cursor"></div>
-<div class="cursor-dot"></div>
+        <div class="dock-actions">
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSfHpll-t5uUPfcfJFZ6sU4kH1s3H985Nami4ZhJMBEqyyGthw/viewform" target="_blank" class="aero-gloss-btn">
+                <span>Register Now</span>
+                <i class="fa-solid fa-arrow-right-long"></i>
+            </a>
+            
+            <!-- RIGHT: Pure MUN Logo Slot (No Link / No Hero Attribute) -->
+            <div class="pure-logo-slot mun-nav-slot" title="MUN Logo">
+                <img src="https://images.squarespace-cdn.com/content/v1/5bda2eff25bf024df30171b0/1613394585092-T8WY1L7KHMCHEPMA6GB8/UN+logo.png?format=1500w" alt="MUN Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <div class="fallback-logo-icon"><i class="fa-solid fa-globe"></i></div>
+            </div>
 
-<!--==========================
-SCROLL BAR
-===========================-->
-
-<div id="progress-bar"></div>
-
-<!--==========================
-BACKGROUND LAYERS
-===========================-->
-
-<div class="background-container">
-
-    <div class="bg hero-bg active"></div>
-
-    <div class="bg unsc-bg"></div>
-
-    <div class="bg unhrc-bg"></div>
-
-    <div class="bg ipc-bg"></div>
-
-    <div class="bg timeline-bg"></div>
-
-    <div class="bg credits-bg"></div>
-
-</div>
-
-<!--==========================
-PARTICLES
-===========================-->
-
-<div id="particles"></div>
-
-<!--==========================
-NAVBAR
-===========================-->
-
-<header id="navbar">
-
-    <div class="logo">
-
-        <span>HARVEST MUN</span>
-
+            <button class="menu-trigger" id="menuTrigger" aria-label="Toggle Menu" type="button">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
     </div>
-
-    <nav>
-
-        <ul>
-
-            <li><a href="#hero">Home</a></li>
-
-            <li><a href="#unsc">UNSC</a></li>
-
-            <li><a href="#unhrc">UNHRC</a></li>
-
-            <li><a href="#ipc">IPC</a></li>
-
-            <li><a href="#timeline">Timeline</a></li>
-
-            <li><a href="#credits">Credits</a></li>
-
-        </ul>
-
-    </nav>
-
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfHpll-t5uUPfcfJFZ6sU4kH1s3H985Nami4ZhJMBEqyyGthw/viewform" target="_blank" class="register-nav">
-
-        Register Now
-
-    </a>
-
 </header>
 
-<!--==========================
-HERO
-===========================-->
+<!-- Mobile Dropdown Drawer -->
+<div class="mobile-drawer" id="mobileDrawer">
+    <button type="button" class="mobile-jump-link" data-target="overview">Overview</button>
+    <button type="button" class="mobile-jump-link" data-target="committees">Committees</button>
+    <button type="button" class="mobile-jump-link" data-target="schedule">Schedule</button>
+    <button type="button" class="mobile-jump-link" data-target="credits">Credits</button>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfHpll-t5uUPfcfJFZ6sU4kH1s3H985Nami4ZhJMBEqyyGthw/viewform" target="_blank" class="drawer-cta">Register Now</a>
+</div>
 
-<section id="hero" class="section hero-section">
-
-    <div class="hero-overlay"></div>
-
-    <div class="hero-grid"></div>
-
-    <div class="hero-content">
-
-        <div class="hero-logo-row">
-
-            <img src="" 
-                class="side-logo"
-                alt="">
-
-            <h1 class="hero-title">
-
-                HARVEST MUN
-
-            </h1>
-
-            <img src="
-                class="side-logo"
-                alt="">
-
+<!--=========================================================
+OVERVIEW SECTION (BENTO AERO)
+===========================================================-->
+<section id="overview" class="overview-bento-section">
+    <div class="aero-bubble bubble-1"></div>
+    <div class="aero-bubble bubble-2"></div>
+    
+    <div class="overview-container">
+        <div class="badge-pill">
+            <i class="fa-solid fa-certificate"></i> Powered by Alliance Group
         </div>
+        <h1 class="overview-main-title">HARVEST <span>MUN</span></h1>
+        <p class="overview-subtitle">UNDER BETA TESTING DO NOT FINALISE!</p>
 
-        <p class="powered">
+        <!-- Bento Glass Grid -->
+        <div class="bento-grid">
+            <div class="bento-card card-main interactive-card">
+                <div class="card-content">
+                    <h3>Diplomacy Redefined</h3>
+                    <p>Step into high-stakes global simulated committees addressing historical crises and humanitarian milestones.</p>
+                </div>
+                <div class="card-action-row">
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfHpll-t5uUPfcfJFZ6sU4kH1s3H985Nami4ZhJMBEqyyGthw/viewform" target="_blank" class="aero-solid-btn">
+                        Register Now <i class="fa-solid fa-chevron-right"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="bento-card card-stat interactive-card">
+                <div class="stat-number">03</div>
+                <div class="stat-label">Comittees</div>
+            </div>
 
-            Powered by Alliance Group
-
-        </p>
-
-        <p class="hero-description">
-
-            UNDER BETA TESTING DO NOT FINALISE!
-
-        </p>
-
-        <div class="hero-buttons">
-
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSfHpll-t5uUPfcfJFZ6sU4kH1s3H985Nami4ZhJMBEqyyGthw/viewform"
-                target="_blank"
-                class="primary-btn">
-
-                Register Now
-
-            </a>
-
-            <a href="#unsc"
-                class="secondary-btn">
-
-                Explore Committees
-
-            </a>
-
+            <div class="bento-card card-tagline interactive-card">
+                <h4>Global Impact</h4>
+                <p>Sharpen rhetoric, negotiation, and crisis response.</p>
+            </div>
         </div>
-
     </div>
-
-    <div class="scroll-indicator">
-
-        <span></span>
-
-    </div>
-
 </section>
 
-<!--==========================
-UNSC
-===========================-->
-
-<section id="unsc"
-    class="section committee-section"
-    data-theme="unsc">
-
-    <div class="committee-wrapper">
-
-        <div class="committee-heading">
-
-            <img src="https://pngimg.com/uploads/un/un_PNG4.png"
-                class="heading-logo"
-                alt="">
-
-            <h2>
-
-                United Nations Security Council
-
-            </h2>
-
-            <img src="https://logodix.com/logo/345500.png"
-                class="heading-logo"
-                alt="">
-
-        </div>
-
-        <div class="committee-grid">
-
-            <div class="committee-image">
-
-                <img src="assets/chair-unsc.jpg"
-                    alt="Chair">
-
-            </div>
-
-            <div class="committee-content">
-
-                <span class="committee-tag">
-
-                    Committee 01
-
-                </span>
-
-                <h3>
-
-                    UNSC
-
-                </h3>
-
-                <h4>
-
-                    Chair:
-                    YOUR NAME HERE
-
-                </h4>
-
-                <p>
-
-                    The United Nations Security Council
-                    addresses international peace,
-                    conflict resolution,
-                    sanctions,
-                    military intervention,
-                    and global security challenges.
-
-                </p>
-
-                <button
-                    class="learn-btn"
-                    data-modal="modal-unsc">
-
-                    Learn More
-
-                </button>
-
-            </div>
-
-        </div>
-
+<!--=========================================================
+COMMITTEES SECTION (INTERACTIVE TABS)
+===========================================================-->
+<section id="committees" class="committees-section">
+    <div class="section-header">
+        <span class="section-tag"></span>
+        <h2>Comittees</h2>
     </div>
 
+    <div class="committee-tabs-container">
+        <div class="tab-buttons">
+            <button class="tab-btn active" data-target="unsc" type="button">UNSC</button>
+            <button class="tab-btn" data-target="unhrc" type="button">UNHRC</button>
+            <button class="tab-btn" data-target="ipc" type="button">IPC</button>
+        </div>
+
+        <div class="tab-panels-wrapper">
+            <div class="tab-panel active" id="unsc">
+                <div class="panel-grid">
+                    <div class="panel-text">
+                        <div class="panel-badge">Committee 01</div>
+                        <h3>United Nations Security Council</h3>
+                        <h4 class="chair-text">Chair: YOUR NAME HERE</h4>
+                        <p>The United Nations Security Council addresses international peace, conflict resolution, sanctions, military intervention, and global security challenges.</p>
+                        <button class="outline-modal-btn" data-modal="modal-unsc" type="button">Read Full Agenda</button>
+                    </div>
+                    <div class="panel-media">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6qJ3BVe21lvDxOUWevwcwnbljgwNFvlL2y4evQFyJvw&s=10" alt="UNSC Chair" onerror="this.src='https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=600&q=80'">
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-panel" id="unhrc">
+                <div class="panel-grid">
+                    <div class="panel-text">
+                        <div class="panel-badge">Committee 02</div>
+                        <h3>United Nations Human Rights Council</h3>
+                        <h4 class="chair-text">Chair: YOUR NAME HERE</h4>
+                        <p>The United Nations Human Rights Council works towards protecting fundamental human rights, addressing humanitarian crises, promoting equality, and ensuring justice across the globe.</p>
+                        <button class="outline-modal-btn" data-modal="modal-unhrc" type="button">Read Full Agenda</button>
+                    </div>
+                    <div class="panel-media">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6qJ3BVe21lvDxOUWevwcwnbljgwNFvlL2y4evQFyJvw&s=10" alt="UNHRC Chair" onerror="this.src='https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80'">
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-panel" id="ipc">
+                <div class="panel-grid">
+                    <div class="panel-text">
+                        <div class="panel-badge">Committee 03</div>
+                        <h3>International Press Corps</h3>
+                        <h4 class="chair-text">Chair: YOUR NAME HERE</h4>
+                        <p>The International Press Corps observes every committee, reports developments, conducts interviews, and documents diplomacy throughout the conference.</p>
+                        <button class="outline-modal-btn" data-modal="modal-ipc" type="button">Read Full Agenda</button>
+                    </div>
+                    <div class="panel-media">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6qJ3BVe21lvDxOUWevwcwnbljgwNFvlL2y4evQFyJvw&s=10" alt="IPC Chair" onerror="this.src='https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=600&q=80'">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 
-<!--==========================
-UNHRC
-===========================-->
-
-<section id="unhrc"
-    class="section committee-section"
-    data-theme="unhrc">
-
-    <div class="committee-wrapper">
-
-        <div class="committee-heading">
-
-            <img src="https://pngimg.com/uploads/un/un_PNG4.png"
-                class="heading-logo"
-                alt="Left Logo">
-
-            <h2>
-
-                United Nations Human Rights Council
-
-            </h2>
-
-            <img src="https://iws.muniversiti.org/storage/10/62ef4aa353124_UNHRC.png"
-                class="heading-logo"
-                alt="Right Logo">
-
-        </div>
-
-        <div class="committee-grid reverse">
-
-            <div class="committee-content">
-
-                <span class="committee-tag">
-
-                    Committee 02
-
-                </span>
-
-                <h3>
-
-                    UNHRC
-
-                </h3>
-
-                <h4>
-
-                    Chair:
-                    YOUR NAME HERE
-
-                </h4>
-
-                <p>
-
-                    The United Nations Human Rights Council
-                    works towards protecting fundamental
-                    human rights, addressing humanitarian
-                    crises, promoting equality, and ensuring
-                    justice across the globe.
-
-                </p>
-
-                <button
-                    class="learn-btn"
-                    data-modal="modal-unhrc">
-
-                    Learn More
-
-                </button>
-
-            </div>
-
-            <div class="committee-image">
-
-                <img src="assets/chair-unhrc.jpg"
-                    alt="UNHRC Chair">
-
-            </div>
-
-        </div>
-
+<!--=========================================================
+SCHEDULE / TIMELINE SECTION
+===========================================================-->
+<section id="schedule" class="schedule-section">
+    <div class="section-header">
+        <span class="section-tag">Roadmap</span>
+        <h2>Conference Schedule</h2>
     </div>
 
+    <div class="modern-timeline">
+        <div class="timeline-row">
+            <div class="time-marker">08:30 AM</div>
+            <div class="timeline-card interactive-card">
+                <h4>Registration & Delegate Check-In</h4>
+                <p>Verification of credentials and distribution of conference kits.</p>
+            </div>
+        </div>
+        <div class="timeline-row">
+            <div class="time-marker">09:30 AM</div>
+            <div class="timeline-card interactive-card">
+                <h4>Opening Ceremony</h4>
+                <p>Official commencement address and secretariat introduction.</p>
+            </div>
+        </div>
+        <div class="timeline-row">
+            <div class="time-marker">10:00 AM</div>
+            <div class="timeline-card interactive-card">
+                <h4>Committee Session I</h4>
+                <p>Roll call, setting the agenda, and opening moderated caucuses.</p>
+            </div>
+        </div>
+        <div class="timeline-row">
+            <div class="time-marker">01:00 PM</div>
+            <div class="timeline-card interactive-card">
+                <h4>Lunch Break</h4>
+                <p>Networking and delegate refreshment break.</p>
+            </div>
+        </div>
+        <div class="timeline-row">
+            <div class="time-marker">02:00 PM</div>
+            <div class="timeline-card interactive-card">
+                <h4>Committee Session II</h4>
+                <p>Unmoderated caucuses, working paper drafting, and bloc formation.</p>
+            </div>
+        </div>
+        <div class="timeline-row">
+            <div class="time-marker">05:30 PM</div>
+            <div class="timeline-card interactive-card">
+                <h4>Closing Ceremony</h4>
+                <p>Awards presentation and official adjournment of Harvest MUN.</p>
+            </div>
+        </div>
+    </div>
 </section>
 
-<!--==========================
-IPC
-===========================-->
-
-<section id="ipc"
-    class="section committee-section"
-    data-theme="ipc">
-
-    <div class="committee-wrapper">
-
-        <div class="committee-heading">
-
-            <img src="https://pngimg.com/uploads/un/un_PNG4.png"
-                class="heading-logo"
-                alt="Left Logo">
-
-            <h2>
-
-                International Press Corps
-
-            </h2>
-
-            <img src="https://events.rdias.ac.in/wp-content/uploads/2022/04/International-Press-.png"
-                class="heading-logo"
-                alt="Right Logo">
-
-        </div>
-
-        <div class="committee-grid">
-
-            <div class="committee-image">
-
-                <img src="assets/chair-ipc.jpg"
-                    alt="IPC Chair">
-
-            </div>
-
-            <div class="committee-content">
-
-                <span class="committee-tag">
-
-                    Committee 03
-
-                </span>
-
-                <h3>
-
-                    IPC
-
-                </h3>
-
-                <h4>
-
-                    Chair:
-                    YOUR NAME HERE
-
-                </h4>
-
-                <p>
-
-                    The International Press Corps
-                    observes every committee,
-                    reports developments,
-                    conducts interviews,
-                    and documents diplomacy
-                    throughout the conference.
-
-                </p>
-
-                <button
-                    class="learn-btn"
-                    data-modal="modal-ipc">
-
-                    Learn More
-
-                </button>
-
-            </div>
-
-        </div>
-
+<!--=========================================================
+CREDITS SECTION (DIFFERENT COLOR ACCENT - DISTINCT BACKGROUND)
+===========================================================-->
+<section id="credits" class="credits-section-alt">
+    <div class="section-header">
+        <span class="section-tag">Recognition</span>
+        <h2>Conference Credits</h2>
     </div>
-
+    
+    <div class="credits-grid-modern">
+        <div class="credit-box interactive-card">
+            <span>Organised By</span>
+            <strong>MUN Core Team</strong>
+        </div>
+        <div class="credit-box interactive-card">
+            <span>Website Design</span>
+            <strong>Alliance Group</strong>
+        </div>
+        <div class="credit-box interactive-card">
+            <span>Venue</span>
+            <strong>Harvest International School Innovation Campus</strong>
+        </div>
+        <div class="credit-box interactive-card">
+            <span>Logistics Team</span>
+            <strong>TBD</strong>
+        </div>
+    </div>
 </section>
 
-<!--==========================
-TIMELINE
-===========================-->
-
-<section id="timeline"
-    class="section timeline-section"
-    data-theme="timeline">
-
-    <div class="section-heading">
-
-        <img src="https://pngimg.com/uploads/un/un_PNG4.png"
-            class="heading-logo"
-            alt="">
-
-        <h2>
-
-            Timeline / Schedule
-
-        </h2>
-
-        <img src="https://static.vecteezy.com/system/resources/previews/019/873/849/original/clock-icon-transparent-free-icon-free-png.png"
-            class="heading-logo"
-            alt="">
-
-    </div>
-
-    <div class="timeline">
-
-        <div class="timeline-item">
-
-            <div class="timeline-dot"></div>
-
-            <div class="timeline-content">
-
-                <h3>
-
-                    08:30 AM
-
-                </h3>
-
-                <p>
-
-                    Registration &
-                    Delegate Check-In
-
-                </p>
-
-            </div>
-
-        </div>
-
-        <div class="timeline-item">
-
-            <div class="timeline-dot"></div>
-
-            <div class="timeline-content">
-
-                <h3>
-
-                    09:30 AM
-
-                </h3>
-
-                <p>
-
-                    Opening Ceremony
-
-                </p>
-
-            </div>
-
-        </div>
-
-        <div class="timeline-item">
-
-            <div class="timeline-dot"></div>
-
-            <div class="timeline-content">
-
-                <h3>
-
-                    10:00 AM
-
-                </h3>
-
-                <p>
-
-                    Committee Session I
-
-                </p>
-
-            </div>
-
-        </div>
-
-        <div class="timeline-item">
-
-            <div class="timeline-dot"></div>
-
-            <div class="timeline-content">
-
-                <h3>
-
-                    01:00 PM
-
-                </h3>
-
-                <p>
-
-                    Lunch Break
-
-                </p>
-
-            </div>
-
-        </div>
-
-        <div class="timeline-item">
-
-            <div class="timeline-dot"></div>
-
-            <div class="timeline-content">
-
-                <h3>
-
-                    02:00 PM
-
-                </h3>
-
-                <p>
-
-                    Committee Session II
-
-                </p>
-
-            </div>
-
-        </div>
-
-        <div class="timeline-item">
-
-            <div class="timeline-dot"></div>
-
-            <div class="timeline-content">
-
-                <h3>
-
-                    05:30 PM
-
-                </h3>
-
-                <p>
-
-                    Closing Ceremony
-
-                </p>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-<!--==========================
-CREDITS
-===========================-->
-
-<section id="credits"
-    class="section credits-section"
-    data-theme="credits">
-
-    <div class="section-heading">
-
-        <img src="https://pngimg.com/uploads/un/un_PNG4.png"
-            class="heading-logo"
-            alt="">
-
-        <h2>
-
-            Credits
-
-        </h2>
-
-        <img src="https://harvestinternationalschool.in/wp-content/uploads/2024/08/logo-01-1-2048x1393.png"
-            class="heading-logo"
-            alt="">
-
-    </div>
-
-    <div class="credits-grid">
-
-        <div class="credit-card">
-
-            <h3>
-
-                Organised By
-
-            </h3>
-
-            <p>
-
-                Alliance Group
-
-            </p>
-
-        </div>
-
-        <div class="credit-card">
-
-            <h3>
-
-                Website Design
-
-            </h3>
-
-            <p>
-
-                YOUR NAME
-
-            </p>
-
-        </div>
-
-        <div class="credit-card">
-
-            <h3>
-
-                Photography
-
-            </h3>
-
-            <p>
-
-                Placeholder
-
-            </p>
-
-        </div>
-
-        <div class="credit-card">
-
-            <h3>
-
-                Media Team
-
-            </h3>
-
-            <p>
-
-                Placeholder
-
-            </p>
-
-        </div>
-
-    </div>
-
-</section>
-
-<!--==========================
+<!--=========================================================
 MODALS
-===========================-->
-
-<div id="modal-unsc" class="modal">
-
-    <div class="modal-box">
-
-        <span class="close-modal">&times;</span>
-
-        <h2>United Nations Security Council</h2>
-
-        <p>
-
-            The UNSC will simulate the tense days of the Cuban Missile Crisis, frozen on 14 October 1962, when the United States discovered Soviet nuclear missiles stationed in Cuba. Delegates will step into the shoes of world leaders navigating one of the most dangerous confrontations of the Cold War. The committee will focus on diplomacy, negotiation, and crisis management, as nations debate military action, sanctions, and peaceful resolution to prevent nuclear escalation. This simulation challenges participants to balance national interests with global security, reflecting the UNSC’s role as the guardian of international peace.
-
-        </p>
-
+===========================================================-->
+<div id="modal-unsc" class="custom-modal">
+    <div class="modal-card-box">
+        <button class="close-modal-btn" type="button">&times;</button>
+        <h3>United Nations Security Council</h3>
+        <p>The UNSC will simulate the tense days of the Cuban Missile Crisis, frozen on 14 October 1962, when the United States discovered Soviet nuclear missiles stationed in Cuba. Delegates will step into the shoes of world leaders navigating one of the most dangerous confrontations of the Cold War.</p>
     </div>
-
 </div>
 
-<div id="modal-unhrc" class="modal">
-
-    <div class="modal-box">
-
-        <span class="close-modal">&times;</span>
-
-        <h2>United Nations Human Rights Council</h2>
-
-        <p>
-
-           The UNHRC will deliberate on the Rwandan Genocide of 1994, one of the most tragic failures of the international community to protect human rights. Delegates will examine the causes, consequences, and humanitarian response to the mass atrocities that claimed hundreds of thousands of lives. The committee will emphasize accountability, justice, and the protection of vulnerable populations, mirroring the UNHRC’s mandate to uphold and promote human rights worldwide. Participants will be tasked with drafting resolutions that address humanitarian aid, refugee protection, and mechanisms to prevent future genocides.
-
-        </p>
-
+<div id="modal-unhrc" class="custom-modal">
+    <div class="modal-card-box">
+        <button class="close-modal-btn" type="button">&times;</button>
+        <h3>United Nations Human Rights Council</h3>
+        <p>The UNHRC will deliberate on the Rwandan Genocide of 1994, one of the most tragic failures of the international community to protect human rights. Delegates will examine the causes, consequences, and humanitarian response to mass atrocities.</p>
     </div>
-
 </div>
 
-<div id="modal-ipc" class="modal">
-
-    <div class="modal-box">
-
-        <span class="close-modal">&times;</span>
-
-        <h2>International Press Corps</h2>
-
-        <p>
-
-            The IPC will assign delegates to cover proceedings in both the UNSC and UNHRC. Acting as journalists, correspondents, and media representatives, IPC members will report on debates, highlight key developments, and shape public perception of the committees’ actions. This body ensures transparency and adds a dynamic layer to the conference, as press coverage influences diplomatic decision-making. Delegates in the IPC will practice investigative reporting, editorial writing, and real-time news dissemination, capturing the essence of international media in global affairs.
-
-        </p>
-
+<div id="modal-ipc" class="custom-modal">
+    <div class="modal-card-box">
+        <button class="close-modal-btn" type="button">&times;</button>
+        <h3>International Press Corps</h3>
+        <p>The IPC will assign delegates to cover proceedings in both the UNSC and UNHRC. Acting as journalists, correspondents, and media representatives, IPC members will report on debates, highlight key developments, and shape public perception.</p>
     </div>
-
 </div>
 
-<!--==========================
-BACK TO TOP
-===========================-->
-
-<button id="backToTop">
-
-    <i class="fa-solid fa-arrow-up"></i>
-
-</button>
-
-<!--==========================
-FOOTER
-===========================-->
-
-<footer>
-
-    <h2>
-
-        HARVEST MUN
-    </h2>
-
-    <p>
-
-        Powered by Alliance Group
-
-    </p>
-
-    <div class="footer-links">
-
-        <a href="#hero">Home</a>
-        <a href="#unsc">UNSC</a>
-        <a href="#unhrc">UNHRC</a>
-        <a href="#ipc">IPC</a>
-        <a href="#timeline">Timeline</a>
-
+<!--=========================================================
+FOOTER (DIFFERENT COLOR ACCENT)
+===========================================================-->
+<footer class="site-footer-alt">
+    <div class="footer-content">
+        <h2>HARVEST MUN</h2>
+        <p>Powered by Alliance Group</p>
+        <div class="footer-nav-inline">
+            <button type="button" class="footer-jump-link" data-target="overview">Overview</button>
+            <button type="button" class="footer-jump-link" data-target="committees">Committees</button>
+            <button type="button" class="footer-jump-link" data-target="schedule">Schedule</button>
+            <button type="button" class="footer-jump-link" data-target="credits">Credits</button>
+        </div>
+        <p class="copyright-note">© 2026 All Rights Reserved.</p>
     </div>
-
-    <p class="copyright">
-
-        © 2026 All Rights Reserved.
-
-    </p>
-
 </footer>
 
-<!--==========================
-SCRIPTS
-===========================-->
-
-<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-
 <script src="script.js"></script>
-
 </body>
-
 </html>
