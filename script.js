@@ -1,5 +1,5 @@
 /* =========================================================
-   BULLETPROOF NAVIGATION & UI SCRIPT
+   BULLETPROOF NAVIGATION & UI SCRIPT (INTEGRATED)
 ========================================================= */
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // 3. Absolute Jump Navigation Fix (Converted anchor links to standard buttons with programmatic scroll)
+    // 3. Absolute Jump Navigation Fix
     const jumpTriggers = document.querySelectorAll(".nav-jump-btn, .mobile-jump-link, .footer-jump-link");
     
     jumpTriggers.forEach(btn => {
@@ -50,6 +50,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 targetSection.scrollIntoView({ behavior: "smooth", block: "start" });
             } else if (targetId === "overview") {
                 window.scrollTo({ top: 0, behavior: "smooth" });
+            }
+
+            // Update active state if it's a desktop nav button
+            if (btn.classList.contains("nav-jump-btn")) {
+                jumpTriggers.forEach(jt => jt.classList.remove("active-link"));
+                btn.classList.add("active-link");
             }
         });
     });
@@ -74,8 +80,8 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // 5. Modal Logic Handling
-    const modalTriggers = document.querySelectorAll(".outline-modal-btn");
+    // 5. Modal Logic Handling (Agenda & Standard Modals)
+    const modalTriggers = document.querySelectorAll("[data-modal]");
     const modals = document.querySelectorAll(".custom-modal");
     const closeButtons = document.querySelectorAll(".close-modal-btn");
 
@@ -94,6 +100,13 @@ document.addEventListener("DOMContentLoaded", () => {
             const modal = btn.closest(".custom-modal");
             if (modal) {
                 modal.classList.remove("active");
+                // Clean up fullscreen state on close
+                modal.classList.remove("fullscreen-mode");
+                const expandIcon = modal.querySelector(".fullscreen-pdf-btn i");
+                if (expandIcon) {
+                    expandIcon.classList.remove("fa-compress");
+                    expandIcon.classList.add("fa-expand");
+                }
             }
         });
     });
@@ -102,6 +115,29 @@ document.addEventListener("DOMContentLoaded", () => {
         modal.addEventListener("click", (e) => {
             if (e.target === modal) {
                 modal.classList.remove("active");
+                modal.classList.remove("fullscreen-mode");
+                const expandIcon = modal.querySelector(".fullscreen-pdf-btn i");
+                if (expandIcon) {
+                    expandIcon.classList.remove("fa-compress");
+                    expandIcon.classList.add("fa-expand");
+                }
+            }
+        });
+    });
+
+    // 6. PDF Modal Fullscreen Toggle Logic
+    const pdfFullscreenButtons = document.querySelectorAll(".fullscreen-pdf-btn");
+
+    pdfFullscreenButtons.forEach(btn => {
+        btn.addEventListener("click", () => {
+            const modal = btn.closest(".custom-modal");
+            if (modal) {
+                modal.classList.toggle("fullscreen-mode");
+                const icon = btn.querySelector("i");
+                if (icon) {
+                    icon.classList.toggle("fa-expand");
+                    icon.classList.toggle("fa-compress");
+                }
             }
         });
     });

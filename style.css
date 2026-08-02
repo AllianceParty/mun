@@ -546,6 +546,12 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
     margin-bottom: 25px;
 }
 
+.committee-btn-group {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
 .outline-modal-btn {
     padding: 10px 20px;
     background: rgba(255,255,255,0.08);
@@ -561,6 +567,17 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 .outline-modal-btn:hover {
     background: rgba(255,255,255,0.2);
     transform: translateY(-2px);
+}
+
+.rop-btn {
+    background: rgba(56, 189, 248, 0.15);
+    border-color: rgba(56, 189, 248, 0.4);
+    color: var(--accent-cyan);
+}
+
+.rop-btn:hover {
+    background: rgba(56, 189, 248, 0.3);
+    color: #ffffff;
 }
 
 .panel-media {
@@ -725,7 +742,7 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 .close-modal-btn {
     position: absolute;
     top: 20px;
-    right: 20px;
+    right: 4px;
     font-size: 1.5rem;
     color: var(--text-muted);
     transition: var(--transition);
@@ -733,6 +750,93 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 
 .close-modal-btn:hover {
     color: white;
+}
+
+/* =========================================================
+   ENLARGED & MOBILE-FRIENDLY PDF MODAL STYLING
+========================================================= */
+.pdf-modal-box {
+    max-width: 95vw !important;
+    width: 100% !important;
+    height: 90vh !important;
+    display: flex;
+    flex-direction: column;
+    padding: 20px !important;
+    transition: all 0.3s ease;
+}
+
+.pdf-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 14px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.pdf-modal-header h3 {
+    font-size: 1.2rem !important;
+    margin-bottom: 0 !important;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 65%;
+}
+
+.pdf-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-left: auto;
+}
+
+.pdf-action-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-primary);
+    font-size: 1rem;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.pdf-action-btn:hover {
+    background: rgba(56, 189, 248, 0.3);
+    border-color: var(--accent-cyan);
+    color: white;
+}
+
+.pdf-container {
+    flex-grow: 1;
+    width: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #000;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.pdf-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* Fullscreen utility classes for desktop and mobile viewports */
+.custom-modal.fullscreen-mode {
+    padding: 0 !important;
+}
+
+.custom-modal.fullscreen-mode .pdf-modal-box {
+    max-width: 100% !important;
+    width: 100% !important;
+    height: 100vh !important;
+    border-radius: 0 !important;
+    border: none !important;
 }
 
 .site-footer-alt {
@@ -794,4 +898,13 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
     .time-marker { text-align: left; }
     .credits-grid-modern { grid-template-columns: 1fr; }
     .floating-dock { padding: 8px 16px; }
+    
+    .pdf-modal-box {
+        height: 95vh !important;
+        padding: 12px !important;
+    }
+    .pdf-modal-header h3 {
+        max-width: 50%;
+        font-size: 0.95rem !important;
+    }
 }

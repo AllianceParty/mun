@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HARVEST MUN | Executive Conference</title>
+    <title>HISIC MUN</title>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -81,7 +81,7 @@ OVERVIEW SECTION (BENTO AERO)
         <div class="badge-pill">
             <i class="fa-solid fa-certificate"></i> Powered by Alliance Group
         </div>
-        <h1 class="overview-main-title">HARVEST <span>MUN</span></h1>
+        <h1 class="overview-main-title">HISIC <span>MUN</span></h1>
         <p class="overview-subtitle">UNDER BETA TESTING DO NOT FINALISE!</p>
 
         <!-- Bento Glass Grid -->
@@ -135,7 +135,10 @@ COMMITTEES SECTION (INTERACTIVE TABS)
                         <h3>United Nations Security Council</h3>
                         <h4 class="chair-text">Chair: YOUR NAME HERE</h4>
                         <p>The United Nations Security Council addresses international peace, conflict resolution, sanctions, military intervention, and global security challenges.</p>
-                        <button class="outline-modal-btn" data-modal="modal-unsc" type="button">Read Full Agenda</button>
+                        <div class="committee-btn-group">
+                            <button class="outline-modal-btn" data-modal="modal-unsc" type="button">Read Full Agenda</button>
+                            <button class="outline-modal-btn rop-btn" data-modal="modal-rop-unsc" type="button"><i class="fa-solid fa-file-pdf"></i> ROP</button>
+                        </div>
                     </div>
                     <div class="panel-media">
                         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6qJ3BVe21lvDxOUWevwcwnbljgwNFvlL2y4evQFyJvw&s=10" alt="UNSC Chair" onerror="this.src='https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=600&q=80'">
@@ -150,7 +153,10 @@ COMMITTEES SECTION (INTERACTIVE TABS)
                         <h3>United Nations Human Rights Council</h3>
                         <h4 class="chair-text">Chair: YOUR NAME HERE</h4>
                         <p>The United Nations Human Rights Council works towards protecting fundamental human rights, addressing humanitarian crises, promoting equality, and ensuring justice across the globe.</p>
-                        <button class="outline-modal-btn" data-modal="modal-unhrc" type="button">Read Full Agenda</button>
+                        <div class="committee-btn-group">
+                            <button class="outline-modal-btn" data-modal="modal-unhrc" type="button">Read Full Agenda</button>
+                            <button class="outline-modal-btn rop-btn" data-modal="modal-rop-unhrc" type="button"><i class="fa-solid fa-file-pdf"></i> ROP</button>
+                        </div>
                     </div>
                     <div class="panel-media">
                         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6qJ3BVe21lvDxOUWevwcwnbljgwNFvlL2y4evQFyJvw&s=10" alt="UNHRC Chair" onerror="this.src='https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80'">
@@ -165,7 +171,10 @@ COMMITTEES SECTION (INTERACTIVE TABS)
                         <h3>International Press Corps</h3>
                         <h4 class="chair-text">Chair: YOUR NAME HERE</h4>
                         <p>The International Press Corps observes every committee, reports developments, conducts interviews, and documents diplomacy throughout the conference.</p>
-                        <button class="outline-modal-btn" data-modal="modal-ipc" type="button">Read Full Agenda</button>
+                        <div class="committee-btn-group">
+                            <button class="outline-modal-btn" data-modal="modal-ipc" type="button">Read Full Agenda</button>
+                            <button class="outline-modal-btn rop-btn" data-modal="modal-rop-ipc" type="button"><i class="fa-solid fa-file-pdf"></i> ROP</button>
+                        </div>
                     </div>
                     <div class="panel-media">
                         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6qJ3BVe21lvDxOUWevwcwnbljgwNFvlL2y4evQFyJvw&s=10" alt="IPC Chair" onerror="this.src='https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=600&q=80'">
@@ -225,7 +234,7 @@ SCHEDULE / TIMELINE SECTION
             <div class="time-marker">05:30 PM</div>
             <div class="timeline-card interactive-card">
                 <h4>Closing Ceremony</h4>
-                <p>Awards presentation and official adjournment of Harvest MUN.</p>
+                <p>Awards presentation and official adjournment of HISIC MUN.</p>
             </div>
         </div>
     </div>
@@ -261,7 +270,7 @@ CREDITS SECTION (DIFFERENT COLOR ACCENT - DISTINCT BACKGROUND)
 </section>
 
 <!--=========================================================
-MODALS
+MODALS (AGENDA & ROP PDF POPUPS)
 ===========================================================-->
 <div id="modal-unsc" class="custom-modal">
     <div class="modal-card-box">
@@ -287,12 +296,62 @@ MODALS
     </div>
 </div>
 
+<!-- ROP PDF Modals -->
+<div id="modal-rop-unsc" class="custom-modal pdf-modal">
+    <div class="modal-card-box pdf-modal-box">
+        <div class="pdf-modal-header">
+            <h3>UNSC - Rules of Procedure (ROP)</h3>
+            <div class="pdf-header-actions">
+                <a href="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf" download class="pdf-action-btn" title="Download PDF"><i class="fa-solid fa-download"></i></a>
+                <button class="pdf-action-btn fullscreen-pdf-btn" type="button" title="Toggle Fullscreen"><i class="fa-solid fa-expand"></i></button>
+                <button class="close-modal-btn" type="button">&times;</button>
+            </div>
+        </div>
+        <div class="pdf-container">
+            <!-- Replace src with your target PDF link -->
+            <iframe src="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf" title="UNSC ROP PDF"></iframe>
+        </div>
+    </div>
+</div>
+
+<div id="modal-rop-unhrc" class="custom-modal pdf-modal">
+    <div class="modal-card-box pdf-modal-box">
+        <div class="pdf-modal-header">
+            <h3>UNHRC - Rules of Procedure (ROP)</h3>
+            <div class="pdf-header-actions">
+                <a href="UNHRC.pdf" download class="pdf-action-btn" title="Download PDF"><i class="fa-solid fa-download"></i></a>
+                <button class="pdf-action-btn fullscreen-pdf-btn" type="button" title="Toggle Fullscreen"><i class="fa-solid fa-expand"></i></button>
+                <button class="close-modal-btn" type="button">&times;</button>
+            </div>
+        </div>
+        <div class="pdf-container">
+            <iframe src="UNHRC.pdf" title="UNHRC ROP PDF"></iframe>
+        </div>
+    </div>
+</div>
+
+<div id="modal-rop-ipc" class="custom-modal pdf-modal">
+    <div class="modal-card-box pdf-modal-box">
+        <div class="pdf-modal-header">
+            <h3>IPC - Rules of Procedure (ROP)</h3>
+            <div class="pdf-header-actions">
+                <a href="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf" download class="pdf-action-btn" title="Download PDF"><i class="fa-solid fa-download"></i></a>
+                <button class="pdf-action-btn fullscreen-pdf-btn" type="button" title="Toggle Fullscreen"><i class="fa-solid fa-expand"></i></button>
+                <button class="close-modal-btn" type="button">&times;</button>
+            </div>
+        </div>
+        <div class="pdf-container">
+            <iframe src="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf" title="IPC ROP PDF"></iframe>
+        </div>
+    </div>
+</div>
+
 <!--=========================================================
 FOOTER (DIFFERENT COLOR ACCENT)
 ===========================================================-->
 <footer class="site-footer-alt">
     <div class="footer-content">
-        <h2>HARVEST MUN</h2>
+        <h2>HISIC MUN</h2>
         <p>Powered by Alliance Group</p>
         <div class="footer-nav-inline">
             <button type="button" class="footer-jump-link" data-target="overview">Overview</button>
